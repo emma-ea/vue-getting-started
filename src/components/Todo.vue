@@ -11,6 +11,12 @@
     ]);
 
     function addTodo() {
+
+        if (newTodo.value.length === 0) {
+            alert("You can't add a todo without entering one")
+            return
+        }
+
         let todo = {
             id: id.value++,
             task: newTodo.value,
@@ -76,8 +82,10 @@
     ul {
         margin-top: 32px;
     }
+
     li {
         font-size: 22px;
         margin-top: 10px;
     }
+
 </style>
