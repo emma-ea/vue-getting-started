@@ -1,6 +1,6 @@
 <script setup>
 
-    import { ref, reactive, computed } from 'vue'
+    import { ref, reactive } from 'vue'
 
     let id = ref(0);
 
@@ -9,8 +9,6 @@
     let todos = reactive([
         {id: id.value++, task: 'Example task'}
     ]);
-
-    let ctodos = computed(() => todos);
 
     function addTodo() {
         let todo = {
@@ -25,7 +23,7 @@
         todos = todos.filter((t) => t.id != todo.id)
         console.log(todos)
     }
-    
+
 </script>
 
 <template>
@@ -36,7 +34,7 @@
     </form>
 
     <ul>
-        <li v-for="todo in ctodos" :key="todo.id">
+        <li v-for="todo in todos" :key="todo.id">
             {{ todo.task }}
             <button class="remove" @click="removeTodo(todo)">remove</button>
         </li>
