@@ -1,18 +1,22 @@
 <script setup>
-import Hello from './Hello.vue';
+import SubTitle from './SubGreetings.vue';
 
 defineProps({
-  msg: {
+  heading: {
     type: String,
     required: true
+  },
+  sub: {
+    type: String,
+    default: 'Hello, there!',
   }
 })
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <Hello />
+    <SubTitle :textmsg="sub" />
+    <h1 class="green">{{ heading }}</h1>
   </div>
 </template>
 

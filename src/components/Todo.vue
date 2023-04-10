@@ -1,34 +1,39 @@
-<script>
+<script setup>
 
-    let id = 0;
+    import { ref, reactive } from 'vue'
 
-    export default {
-        data() {
-            return {
-                newTodo: '',
-                todos: [
-                    {id: id++, task: 'Example task'}
-                ],
-            }
-        },
-        methods: {
-            addTodo() {
-                let todo = {
-                    id: id++,
-                    task: this.newTodo,
-                }
-                this.todos.push(todo)
-                this.newTodo = ''
-            },
-            removeTodo(todo) {
-                this.todos = this.todos.filter((t) => t.id != todo.id)
-            }
+    let id = ref(0);
+
+    let newTodo = ref('');
+
+    let todos = reactive([
+        {id: id.value++, task: 'Example task'}
+    ]);
+
+    function addTodo() {
+
+        if (newTodo.value.length === 0) {
+            alert("You can't add a todo without entering one")
+            return
         }
+
+        let todo = {
+            id: id.value++,
+            task: newTodo.value,
+        }
+        todos.push(todo)
+        newTodo.value = ''
     }
+
+    function removeTodo(todo) {
+        todos = todos.filter((t) => t.id != todo.id)
+        console.log(todos)
+    }
+
 </script>
 
 <template>
-    <h3>Todo Items</h3>
+    <h3 class="green">Todo Items</h3>
     <form @submit.prevent="addTodo">
         <input v-model="newTodo"/>
         <button class="todo">Add todo</button>
@@ -45,17 +50,7 @@
 <style scoped>
     h3 {
         font-weight: bold;
-        color: green;
         font-size: 32px;
-    }
-
-    .todo {
-        margin-left: 12px;
-        padding: 14px;
-        font-size: 15px;
-        font-weight: bold;
-        border-radius: 6px;
-        border: 0px;
     }
 
     .remove {
@@ -78,8 +73,10 @@
     ul {
         margin-top: 32px;
     }
+
     li {
         font-size: 22px;
         margin-top: 10px;
     }
+
 </style>

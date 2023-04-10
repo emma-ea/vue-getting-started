@@ -1,7 +1,14 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import Todo from './components/Todo.vue'
+import AppTitle from './components/TitleGreetings.vue'
+import TodoView from './components/Todo.vue'
 import VerticalLine from './components/VerticalLineBreak.vue'
+import CreateProfileButton from './components/GotoProfileButton.vue'
+
+import { ref } from 'vue'
+
+const title = ref('Create your todos');
+const sub = ref('Here you go');
+
 </script>
 
 <template>
@@ -9,19 +16,32 @@ import VerticalLine from './components/VerticalLineBreak.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="Vue Todo!" />
+      <AppTitle :heading="title" :sub="sub" />
     </div>
     <VerticalLine/>
   </header>
 
   <main>
-    <Todo/>
+    <TodoView/>
   </main>
+
+  <section>
+    <CreateProfileButton/>
+    <RouterView></RouterView>
+  </section>
+  
+
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
+}
+
+section {
+  margin-left: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .logo {
