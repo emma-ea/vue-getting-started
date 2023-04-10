@@ -2,11 +2,12 @@
 import AppTitle from './components/TitleGreetings.vue'
 import TodoView from './components/Todo.vue'
 import VerticalLine from './components/VerticalLineBreak.vue'
+import CreateProfileButton from './components/GotoProfileButton.vue'
 
 import { ref } from 'vue'
 
 const title = ref('Create your todos');
-const sub = ref('Here you go!');
+const sub = ref('Here you go');
 
 </script>
 
@@ -23,11 +24,24 @@ const sub = ref('Here you go!');
   <main>
     <TodoView/>
   </main>
+
+  <section>
+    <CreateProfileButton/>
+    <RouterView></RouterView>
+  </section>
+  
+
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
+}
+
+section {
+  margin-left: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .logo {

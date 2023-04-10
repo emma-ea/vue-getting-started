@@ -53,15 +53,6 @@
         font-size: 32px;
     }
 
-    .todo {
-        margin-left: 12px;
-        padding: 14px;
-        font-size: 15px;
-        font-weight: bold;
-        border-radius: 6px;
-        border: 0px;
-    }
-
     .remove {
         background-color: rgba(255, 0, 0, 0.651);
         color: white;

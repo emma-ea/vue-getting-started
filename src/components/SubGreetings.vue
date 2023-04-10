@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 
     defineProps({
         textmsg: {
@@ -7,10 +8,18 @@
         }
     })
 
+
+let name = ref('')
+
+onMounted(() => {
+  name.value = localStorage.getItem('name')
+})
+
 </script>
 
 <template>
-    <h3 class="green"> {{ textmsg }}</h3>
+    <h3 v-if="name" class="green">{{ textmsg }}, {{ name }}!</h3>
+    <h3 v-else class="green"> {{ textmsg }}!</h3>
 </template>
 
 <style scoped>
